@@ -1,8 +1,14 @@
 [package]
-name = "crate-template"
+name = "vfio-bindings"
 version = "0.1.0"
-authors = [TODO]
+authors = ["The Cloud Hypervisor Authors"]
 license = "Apache-2.0 OR BSD-3-Clause"
+description = "Rust FFI bindings to vfio generated using bindgen."
+repository = "https://github.com/rust-vmm/vfio-bindings"
 edition = "2018"
 
+[features]
+vfio-v5_0_0 = []
+
 [dependencies]
+vmm-sys-util = { git = "https://github.com/rust-vmm/vmm-sys-util" }
