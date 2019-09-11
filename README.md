@@ -1,41 +1,42 @@
-# Crate Name
+# vfio-bindings
 
 ## Design
 
-TODO: This section should have a high-level design of the crate.
+The vfio-bindings crate is designed as rust FFI bindings to vfio
+generated using [bindgen](https://crates.io/crates/bindgen).
 
-Some questions that might help in writing this section:
-- What is the purpose of this crate?
-- What are the main components of the crate? How do they interact which each
-  other?
+Multiple Linux versions are supported through rust 'features'. For each
+supported Linux version, a feature is introduced.
+
+Currently supported features/Linux versions:
+- vfio-v5_0_0 contains the bindings for the Linux kernel version 5.0
 
 ## Usage
 
-TODO: This section describes how the crate is used.
+First, add the following to your Cargo.toml:
+```toml
+vfio-bindings = "0.1"
+```
+Next, add this to your crate root:
 
-Some questions that might help in writing this section:
-- What traits do users need to implement?
-- Does the crate have any default/optional features? What is each feature
-  doing?
-- Is this crate used by other rust-vmm components? If yes, how?
+```rust
+extern crate vfio_bindings;
+```
+
+By default vfio-bindings will export a wrapper over the latest available kernel
+version it supported, but you can select a different version by specifying it in
+your Cargo.toml:
+```toml
+vfio-bindings = { version = "0.1", features = ["vfio-v5_0_0"]}
+```
 
 ## Examples
 
-TODO: Usage examples.
-
+To use this bindings, you can do:
 ```rust
-use my_crate;
-
-...
+use vfio_bindings::bindings::vfio::*;
 ```
 
 ## License
 
-**!!!NOTICE**: The BSD-3-Clause license is not included in this template.
-The license needs to be manually added because the text of the license file
-also includes the copyright. The copyright can be different for different
-crates. If the crate contains code from CrosVM, the crate must add the
-CrosVM copyright which can be found
-[here](https://chromium.googlesource.com/chromiumos/platform/crosvm/+/master/LICENSE).
-For crates developed from scratch, the copyright is different and depends on
-the contributors.
+This code is licensed under Apache-2.0 or BSD-3-Clause.
