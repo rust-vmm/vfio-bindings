@@ -5,7 +5,9 @@ authors = ["The Cloud Hypervisor Authors"]
 license = "Apache-2.0 OR BSD-3-Clause"
 description = "Rust FFI bindings to vfio generated using bindgen."
 repository = "https://github.com/rust-vmm/vfio-bindings"
+readme = "README.md"
 edition = "2018"
+keywords = ["vfio"]
 
 [features]
 vfio-v5_0_0 = []
