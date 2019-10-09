@@ -11,4 +11,4 @@ edition = "2018"
 vfio-v5_0_0 = []
 
 [dependencies]
-vmm-sys-util = { git = "https://github.com/rust-vmm/vmm-sys-util" }
+vmm-sys-util = "0.1.1"
