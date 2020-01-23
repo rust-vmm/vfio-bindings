@@ -11,6 +11,7 @@ keywords = ["vfio"]
 
 [features]
 vfio-v5_0_0 = []
+fam-wrappers = ["vmm-sys-util"]
 
 [dependencies]
-vmm-sys-util = "0.1.1"
+vmm-sys-util = { version = ">=0.2.0", optional = true }
