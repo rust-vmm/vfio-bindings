@@ -1,0 +1,56 @@
+steps:
+  - label: "build-v5.0-fam-x86"
+    commands:
+     - cargo build --release --features=fam-wrappers,vfio-v5_0_0
+     - cargo build --release --features=fam-wrappers,vfio-v5_0_0 --target x86_64-unknown-linux-musl
+    retry:
+      automatic: false
+    agents:
+      platform: x86_64.metal
+      os: linux
+    plugins:
+      - docker#v3.0.1:
+          image: "rustvmm/dev:v4"
+          always-pull: true
+
+  - label: "build-v5.0-fam-arm"
+    commands:
+      - cargo build --release --features=fam-wrappers,vfio-v5_0_0
+      - cargo build --release --features=fam-wrappers,vfio-v5_0_0 --target aarch64-unknown-linux-musl
+    retry:
+      automatic: false
+    agents:
+      platform: arm.metal
+      os: linux
+    plugins:
+      - docker#v3.0.1:
+          image: "rustvmm/dev:v4"
+          always-pull: true
+
+  - label: "check-warnings-fam-x86"
+    commands:
+      - RUSTFLAGS="-D warnings" cargo check --features=vfio-v5_0_0,fam-wrappers
+    retry:
+      automatic: false
+    agents:
+      platform: x86_64.metal
+      os: linux
+    plugins:
+      - docker#v3.0.1:
+          privileged: true
+          image: "rustvmm/dev:v4"
+          always-pull: true
+
+  - label: "check-warnings-fam-arm"
+    commands:
+      - RUSTFLAGS="-D warnings" cargo check --features=vfio-v5_0_0,fam-wrappers
+    retry:
+      automatic: false
+    agents:
+      platform: arm.metal
+      os: linux
+    plugins:
+      - docker#v3.0.1:
+          privileged: true
+          image: "rustvmm/dev:v4"
+          always-pull: true
