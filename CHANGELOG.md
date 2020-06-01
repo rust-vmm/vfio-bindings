@@ -1,4 +1,11 @@
-# v0.1.0
+# [v0.2.0]
+
+## Added
+
+- Add FAM wrappers for vfio\_irq\_set
+- Update vmm-sys-util version to ">=0.2.0"
+
+# [v0.1.0]
 
 This is the first `vfio-bindings` crate release.
 
