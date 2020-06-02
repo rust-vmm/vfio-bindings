@@ -15,7 +15,7 @@ Currently supported features/Linux versions:
 
 First, add the following to your Cargo.toml:
 ```toml
-vfio-bindings = "0.1"
+vfio-bindings = "0.2"
 ```
 Next, add this to your crate root:
 
@@ -27,7 +27,7 @@ By default vfio-bindings will export a wrapper over the latest available kernel
 version it supported, but you can select a different version by specifying it in
 your Cargo.toml:
 ```toml
-vfio-bindings = { version = "0.1", features = ["vfio-v5_0_0"]}
+vfio-bindings = { version = "0.2", features = ["vfio-v5_0_0"]}
 ```
 
 ## Examples
