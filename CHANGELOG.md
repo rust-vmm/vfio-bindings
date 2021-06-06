@@ -1,3 +1,9 @@
+# [v0.3.0]
+
+## Added
+
+- Update vmm-sys-util version to ">=0.8.0"
+
 # [v0.2.0]
 
 ## Added
