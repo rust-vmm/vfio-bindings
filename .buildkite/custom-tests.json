@@ -1,0 +1,28 @@
+{
+    "tests": [
+        {
+            "test_name": "build-v5.0-fam-gnu",
+            "command": "cargo build --release --features=fam-wrappers,vfio-v5_0_0",
+            "platform": [
+                "x86_64",
+                "aarch64"
+            ]
+        },
+        {
+            "test_name": "build-v5.0-fam-musl",
+            "command": "cargo build --release --features=fam-wrappers,vfio-v5_0_0 --target {target_platform}-unknown-linux-musl",
+            "platform": [
+                "x86_64",
+                "aarch64"
+            ]
+        },
+        {
+            "test_name": "check-warnings-fam",
+            "command": "RUSTFLAGS=\"-D warnings\" cargo check --features=vfio-v5_0_0,fam-wrappers",
+            "platform": [
+                "x86_64",
+                "aarch64"
+            ]
+        }
+    ]
+}
